@@ -12,13 +12,13 @@ export async function listComputer(req: Request, res: Response) {
 }
 
 
-export async function saveBook(req: Request, res: Response) {
+export async function saveComputer(req: Request, res: Response) {
     const client = await pool.connect();
-    const book = req.body;
-    console.log(book);
+    const computer = req.body;
+    console.log(computer);
     try {
       const response = await client.query(
-        `insert INTO books (title, description) VALUES ('${book.title}','${book.description}' ) RETURNING *`,
+        `insert INTO computers (model, description) VALUES ('${computer.model}','${computer.description}' ) RETURNING *`,
       );
       console.log(response.rows[0]);
       res.status(201).json(response.rows[0]);
