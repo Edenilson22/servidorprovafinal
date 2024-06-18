@@ -2,13 +2,13 @@ import { pool } from "../shared/database";
 import { Request, Response, Router } from "express";
 
 
-export async function listBook(req: Request, res: Response) {
+export async function listComputer(req: Request, res: Response) {
   //conecta com o banco
   const client = await pool.connect();
   //realiza consulta sql
-  const books = await client.query(`select * from books`)
+  const computers = await client.query(`select * from computers`)
   //retorna consulta em formato json
-  return res.status(200).json(books.rows);
+  return res.status(200).json(computers.rows);
 }
 
 
