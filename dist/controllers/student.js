@@ -9,26 +9,26 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.saveCourse = exports.listCourse = void 0;
+exports.saveStudent = exports.listStudent = void 0;
 const database_1 = require("../shared/database");
-function listCourse(req, res) {
+function listStudent(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         //conecta com o banco
         const client = yield database_1.pool.connect();
         //realiza consulta sql
-        const courses = yield client.query(`select * from courses`);
+        const students = yield client.query(`select * from students`);
         //retorna consulta em formato json
-        return res.status(200).json(courses.rows);
+        return res.status(200).json(students.rows);
     });
 }
-exports.listCourse = listCourse;
-function saveCourse(req, res) {
+exports.listStudent = listStudent;
+function saveStudent(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         const client = yield database_1.pool.connect();
-        const course = req.body;
-        console.log(course);
+        const student = req.body;
+        console.log(student);
         try {
-            const response = yield client.query(`insert INTO courses (name) VALUES ('${course.name}') RETURNING *`);
+            const response = yield client.query(`insert INTO students (name, email) VALUES ('${student.name}','${student.email}' ) RETURNING *`);
             console.log(response.rows[0]);
             res.status(201).json(response.rows[0]);
         }
@@ -40,4 +40,4 @@ function saveCourse(req, res) {
         }
     });
 }
-exports.saveCourse = saveCourse;
+exports.saveStudent = saveStudent;

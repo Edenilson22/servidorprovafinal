@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { listCourse, saveCourse } from "./controllers/course";
-import { listStudent, saveStudent } from "./controllers/student";
+import { listStudent, saveStudent } from "./controllers/book";
 const router = Router();
 
 router.get("/courses", listCourse);
