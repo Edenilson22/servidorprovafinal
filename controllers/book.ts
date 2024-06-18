@@ -12,13 +12,13 @@ export async function listBook(req: Request, res: Response) {
 }
 
 
-export async function saveBook(req: Request, res: Response) {
+export async function saveStudent(req: Request, res: Response) {
     const client = await pool.connect();
-    const book = req.body;
-    console.log(book);
+    const student = req.body;
+    console.log(student);
     try {
       const response = await client.query(
-        `insert INTO books (title, description) VALUES ('${book.title}','${book.description}' ) RETURNING *`,
+        `insert INTO students (name, email) VALUES ('${student.name}','${student.email}' ) RETURNING *`,
       );
       console.log(response.rows[0]);
       res.status(201).json(response.rows[0]);
