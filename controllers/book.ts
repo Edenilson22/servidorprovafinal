@@ -18,7 +18,7 @@ export async function saveBook(req: Request, res: Response) {
     console.log(book);
     try {
       const response = await client.query(
-        `insert INTO books (titulo, descricao) VALUES ('${book.title}','${book.description}' ) RETURNING *`,
+        `insert INTO books (title, description) VALUES ('${book.title}','${book.description}' ) RETURNING *`,
       );
       console.log(response.rows[0]);
       res.status(201).json(response.rows[0]);
