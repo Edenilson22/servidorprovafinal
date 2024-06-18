@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { listCourse, saveCourse } from "./controllers/course";
+import { listSchool, saveCourse } from "./controllers/school";
 import { listBook, saveBook } from "./controllers/book";
 const router = Router();
 
-router.get("/courses", listCourse);
+router.get("/schools", listSchool);
 router.post("/courses", saveCourse);
 router.get("/books", listBook);
 router.post("/books", saveBook)

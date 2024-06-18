@@ -2,13 +2,13 @@ import { pool } from "../shared/database";
 import { Request, Response, Router } from "express";
 
 
-export async function listCourse(req: Request, res: Response) {
+export async function listSchool(req: Request, res: Response) {
   //conecta com o banco
   const client = await pool.connect();
   //realiza consulta sql
-  const courses = await client.query(`select * from courses`)
+  const schools = await client.query(`select * from schools`)
   //retorna consulta em formato json
-  return res.status(200).json(courses.rows);
+  return res.status(200).json(schools.rows);
 }
 
 export async function saveCourse(req: Request, res: Response) {
