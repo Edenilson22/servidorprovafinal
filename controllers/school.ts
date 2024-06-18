@@ -11,13 +11,13 @@ export async function listSchool(req: Request, res: Response) {
   return res.status(200).json(schools.rows);
 }
 
-export async function saveCourse(req: Request, res: Response) {
+export async function saveSchool(req: Request, res: Response) {
   const client = await pool.connect();
-  const course = req.body;
-  console.log(course);
+  const school = req.body;
+  console.log(school);
   try {
     const response = await client.query(
-      `insert INTO courses (name) VALUES ('${course.name}') RETURNING *`,
+      `insert INTO schools (name) VALUES ('${school.name}') RETURNING *`,
     );
     console.log(response.rows[0]);
     res.status(201).json(response.rows[0]);
